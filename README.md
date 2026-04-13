@@ -2,46 +2,23 @@
 
 Uma solução inteligente para desmistificar o "juridiquês", automatizando a extração de dados críticos e a análise de documentos judiciais.
 
+## 📸 Demonstração do Sistema
+
+<div align="center">
+  <img src="Imagens1.png" width="450">
+  <img src="Imagens2.png" width="450">
+  <img src="Imagens3.png" width="450">
+  <img src="Imagens4.png" width="450">
+  <img src="Imagens5.png" width="450">
+</div>
+
 ## 🚀 Sobre o Projeto
-Esta API foi desenvolvida para transformar documentos jurídicos complexos em informações acionáveis. Utilizando uma arquitetura moderna, ela serve como base para processamento de linguagem natural (NLP) e extração de metadados, identificando conteúdos essenciais em arquivos PDF.
-
-### ✨ Funcionalidades Atuais
-- **Extração de Texto:** Leitura técnica e de alta performance de arquivos PDF via PyMuPDF.
-- **Segurança Nativa:** Proteção via cabeçalho `x-api-key`, garantindo que apenas usuários autorizados acessem o serviço.
-- **Arquitetura Robusta:** Totalmente conteinerizada com Docker, pronta para deploy escalável.
-- **Documentação Automática:** Interface interativa via Swagger UI.
-
-## 🛠️ Tecnologias Utilizadas
-- **Python 3.11+** 🐍
-- **FastAPI:** Framework moderno e de alta performance.
-- **PyMuPDF (fitz):** Biblioteca líder em precisão para extração de PDFs.
-- **Docker:** Padronização do ambiente de execução.
+Esta API foi desenvolvida para transformar documentos jurídicos complexos em informações acionáveis via FastAPI e Docker.
 
 ## 📦 Como Instalar e Rodar
 
-### Passo a Passo
-
-1. **Clone o repositório:**
-   ```bash
-   git clone https://github.com/Liucera/API-JURIDIQUES-ZERO.git
-   cd API-JURIDIQUES-ZERO
-   ```
-
-2. **Construa a imagem Docker:**
-   ```bash
-   docker build -t juridiques-api .
-   ```
-
-3. **Inicie o container:**
-   ```bash
-   docker run -d -p 8000:8000 --name juridiques-container juridiques-api
-   ```
-
-## 🔐 Segurança e Autenticação
-
-Para utilizar os endpoints da API, inclua a chave no cabeçalho:
-- **Header:** `x-api-key`
-- **Chave padrão:** `Juridiques2026`
+1. **Build:** `docker build -t juridiques-api .`
+2. **Run:** `docker run -d -p 8000:8000 --name juridiques-container juridiques-api`
 
 ---
 Desenvolvido por [Liucera](https://github.com/Liucera)
