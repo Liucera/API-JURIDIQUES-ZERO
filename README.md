@@ -7,6 +7,14 @@ Esta API foi desenvolvida para transformar documentos jurídicos complexos em in
 
 ---
 
+## 🔐 Segurança e Autenticação
+A API está protegida por uma chave de segurança. Para realizar requisições aos endpoints, você deve incluir o seguinte cabeçalho (Header):
+
+- **Header Key:** `x-api-key`
+- **Valor Padrão:** `Juridiques2026`
+
+---
+
 ## 📸 Demonstração do Ambiente
 
 ### 🐳 Gerenciamento de Infraestrutura (Docker)
