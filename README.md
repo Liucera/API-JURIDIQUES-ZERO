@@ -10,7 +10,7 @@ Esta API foi desenvolvida para transformar documentos jurídicos complexos em in
 ## 📸 Demonstração do Ambiente
 
 ### 🐳 Gerenciamento de Infraestrutura (Docker)
-Abaixo, o monitoramento dos containers via Docker Desktop, garantindo a estabilidade e o controle de recursos (CPU/Memória).
+Monitoramento dos containers via Docker Desktop, garantindo o controle de recursos como CPU e Memória.
 <div align="center">
   <img src="Imagens1.png" width="850">
 </div>
@@ -18,9 +18,19 @@ Abaixo, o monitoramento dos containers via Docker Desktop, garantindo a estabili
 <br>
 
 ### ⚡ Interface de Testes (Swagger UI)
-Documentação interativa da API, onde é possível realizar o upload de PDFs e validar a autenticação via `x-api-key`.
+Documentação interativa da API para upload de PDFs e validação da `x-api-key`.
 <div align="center">
   <img src="Imagens2.png" width="850">
+</div>
+
+<br>
+
+### 🔍 Processamento e Logs
+Visualização detalhada da extração de dados e logs de execução do servidor.
+<div align="center">
+  <img src="Imagens3.png" width="400">
+  <img src="Imagens4.png" width="400">
+  <img src="Imagens5.png" width="400">
 </div>
 
 ---
