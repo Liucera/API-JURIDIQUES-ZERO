@@ -1,0 +1,20 @@
+services:
+  # O Motor (FastAPI)
+  api:
+    build: .
+    command: python3 -m uvicorn app.main:app --host 0.0.0.0 --port 8000
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+
+  # A Vitrine (Streamlit)
+  interface:
+    build: .
+    command: streamlit run interface.py --server.port 8501 --server.address 0.0.0.0
+    ports:
+      - "8501:8501"
+    depends_on:
+      - api
+    env_file:
+      - .env

@@ -35,7 +35,7 @@ if st.button("🚀 Traduzir para Linguagem Simples"):
             
             try:
                 # Usando o IP 127.0.0.1 que é o mais estável para o seu computador
-                response = requests.post("http://127.0.0.1:8000/upload", files=files, headers=headers)
+                response = requests.post("http://api:8000/upload", files=files, headers=headers)
                 
                 if response.status_code == 200:
                     texto_para_traduzir = response.json().get("content", "")

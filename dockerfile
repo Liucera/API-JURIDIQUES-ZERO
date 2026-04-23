@@ -1,14 +1,18 @@
-FROM python:3.11-slim
+FROM python:3.12-slim
 
+# Define onde o código vai morar dentro do contêiner
 WORKDIR /app
 
-# Instalando dependências primeiro (otimiza o cache do Docker)
+# Copia as dependências e instala
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copiando o código da aplicação
-COPY ./app ./app
+# COPIA TUDO da sua pasta para dentro do /app do contêiner
+COPY . .
 
-# Comando para rodar a API
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Expõe as portas
+EXPOSE 8000
+EXPOSE 8501
 
+# O comando de execução (garantindo que ele aponte para os arquivos certos)
+# Note que não precisamos de caminhos longos aqui porque estamos no WORKDIR /app
