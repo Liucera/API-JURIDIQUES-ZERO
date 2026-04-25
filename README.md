@@ -1,51 +1,73 @@
-# ⚖️ Juridiques Zero - Arquitetura Conteinerizada
+# ⚖️ Juridiques Zero - Inteligência Jurídica Soberana
 
-Este projeto representa a evolução de uma ferramenta de extração de dados para uma arquitetura moderna de microserviços, focada em segurança, escalabilidade e provisionamento profissional.
+**Soberania Digital e Inteligência Artificial Local para o setor Jurídico.**
 
----
-
-## 🏗️ Arquitetura do Sistema (Explicação Técnica)
-
-Abaixo, detalhamos a infraestrutura que compõe o ecossistema do projeto:
-
-![Arquitetura do Sistema](./docs/imagem7.png)
-
-### 1. Camada de Hospedagem (WSL2 + Docker Compose)
-O projeto utiliza o **WSL2** para criar um ambiente Linux isolado dentro do Windows. O uso do **Docker Compose** garante que nada "polua" o sistema operacional principal. Isso significa que, se você levar este projeto para a **AWS** amanhã, ele rodará exatamente do mesmo jeito.
-
-### 2. Orquestração de Microserviços
-O sistema não é um bloco único, mas uma rede coordenada:
-* **Contêiner API (O Cérebro):** Fica nos bastidores. É especialista em logística de dados: recebe o PDF, usa a biblioteca **PyMuPDF** para extrair o texto e devolve uma resposta estruturada (JSON).
-* **Contêiner Interface (A Vitrine):** É a porta de entrada para o usuário. Gerencia o upload do documento e a interação visual via **Streamlit**.
-
-### 3. Rede Interna (Service Discovery)
-Um dos grandes marcos deste projeto foi a implementação do Service Discovery. Em vez de usar IPs locais (`127.0.0.1`), os contêineres se comunicam pelo nome do serviço (`http://api:8000`). Isso simula o funcionamento de grandes centros de dados.
-
-### 4. Segurança e Configuração (.env)
-Utilizamos o padrão ouro de segurança em Cloud: as chaves de API não estão escritas no código, mas são injetadas pelos contêineres através de arquivos `.env`. Isso evita exposições acidentais em repositórios públicos.
-
-### 5. Sistema Híbrido
-O processamento pesado do PDF ocorre localmente no Docker, enquanto a inteligência de tradução busca a nuvem da **OpenAI**, garantindo agilidade e precisão.
+O **Juridiques Zero** é um ecossistema de microserviços desenhado para democratizar o entendimento de documentos judiciais. O projeto resolve o problema do "juridiquês" arcaico, permitindo que advogados e cidadãos convertam decisões complexas em linguagem clara de forma **100% privada e offline**.
 
 ---
 
-## 📸 Demonstração do Ambiente Operacional
+## 🎯 Objetivo e Foco do Projeto
+O sistema foca na **Gestão de Decisões Judiciais e Liminares**. O diferencial é a **Privacidade Total**: ao utilizar modelos de IA locais, garantimos que dados sensíveis de processos (como nomes de partes e valores de causas) nunca saiam da infraestrutura controlada pelo usuário, respeitando integralmente a LGPD.
 
-Aqui vemos a integração em tempo real entre os serviços:
-
-<p align="center">
-  <img src="./docs/imagem6.png" width="45%" title="Interface Streamlit" />
-  <img src="./docs/imagem8.png" width="45%" title="Monitoramento Docker Desktop" />
-</p>
-
-* **À esquerda:** A interface pronta para receber o documento jurídico.
-* **À direita:** O monitoramento via Docker Desktop, garantindo o controle de recursos como CPU e Memória de cada contêiner.
+### Exemplo de Uso Real:
+* **Entrada:** Uma decisão técnica da 2ª Vara Cível sobre uma tutela de urgência.
+* **Saída:** Identificação automática do prazo (ex: 48h), valor da multa (ex: R$ 20.000,00) e uma explicação simplificada: *"O juiz aceitou o pedido urgente"*.
 
 ---
 
-## ⏳ Galeria de Evolução: O Processo Anterior
+## 🏗️ Arquitetura do Sistema (Provisionamento PSC)
 
-Antes da arquitetura final, o projeto passou por fases de validação fundamentais para garantir a precisão da extração:
+Abaixo, detalhamos a infraestrutura conteinerizada que compõe o ecossistema:
+
+### 1. Orquestração de Microserviços
+O sistema utiliza **Docker Compose** para gerenciar quatro serviços integrados:
+* **API (FastAPI):** O cérebro logístico. Extrai texto de PDFs via `PyPDF2` e coordena a IA e o banco de dados.
+* **IA Local (Ollama/Llama 3):** Processamento de linguagem natural rodando localmente, eliminando custos com APIs externas.
+* **Banco de Dados (PostgreSQL):** "Arquivo Digital" persistente que imortaliza cada documento processado.
+* **Interface (Streamlit):** Porta de entrada visual para upload e consulta de documentos.
+
+### 2. Rede Interna e Service Discovery
+Os contêineres comunicam-se via nomes de serviço (`http://api:8000`), simulando um ambiente real de Data Center, sem exposição desnecessária de portas para o host.
+
+---
+
+## 🔌 Documentação da API (Swagger)
+O projeto conta com documentação interativa automática para testes de endpoints.
+👉 **Acesse em:** `http://localhost:8000/docs`
+
+---
+
+## 🚀 Como Executar (Passo a Passo)
+
+1. **Clonar o Repositório:**
+   ```bash
+   git clone [https://github.com/Liucera/API-JURIDIQUES-ZERO.git](https://github.com/Liucera/API-JURIDIQUES-ZERO.git)
+   cd API-JURIDIQUES-ZERO
+
+2. Provisionar a Infraestrutura:
+
+Bash
+docker-compose up -d --build
+
+3.0 Instalar o Modelo de IA (Obrigatório na primeira execução):
+
+Bash
+docker exec -it juridiques-ollama ollama run llama3
+
+4.0 Acessar o Sistema:
+
+Interface: http://localhost:8501
+
+API Docs: http://localhost:8000/docs
+
+5.0 📸 Demonstração do Ambiente Operacional
+O monitoramento via Docker Desktop garante o controle de recursos (CPU/Memória) de cada serviço em tempo real.
+
+---
+
+## ⏳ Galeria de Evolução: O Processo de Desenvolvimento
+
+Antes da arquitetura final com IA Local, o projeto passou por fases de validação fundamentais para garantir a precisão da extração e segurança:
 
 <p align="center">
   <img src="./docs/imagem1.png" width="18%" />
@@ -56,13 +78,6 @@ Antes da arquitetura final, o projeto passou por fases de validação fundamenta
 </p>
 
 ### O que estas imagens representam:
-1.  **Validação de Metadados:** Transição da leitura bruta para a extração inteligente de textos de processos.
-2.  **Segurança de Header:** Implementação da `x-api-key` (Juridiques2026) para proteção dos endpoints.
-3.  **Logs de Depuração:** Monitoramento constante da comunicação entre o motor de extração e o servidor Uvicorn.
-
----
-
-## 🚀 Como Executar
-1. `git clone https://github.com/Liucera/API-JURIDIQUES-ZERO.git`
-2. Configure seu arquivo `.env` com sua chave da OpenAI.
-3. Execute: `docker-compose up --build`
+* **Validação de Metadados:** Transição da leitura bruta para a extração inteligente.
+* **Segurança de Header:** Implementação da chave de segurança `Juridiques2026`.
+* **Logs de Depuração:** Monitorização da comunicação entre os microserviços.
