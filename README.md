@@ -81,3 +81,31 @@ Antes da arquitetura final com IA Local, o projeto passou por fases de validaç�
 * **Validação de Metadados:** Transição da leitura bruta para a extração inteligente.
 * **Segurança de Header:** Implementação da chave de segurança `Juridiques2026`.
 * **Logs de Depuração:** Monitorização da comunicação entre os microserviços.
+## 📊 Fluxo de Arquitetura
+
+```mermaid
+graph TD
+    User((👤 Usuário)) -->|Upload PDF| Streamlit[🖥️ Interface: Streamlit]
+    
+    subgraph Docker_Network [Rede Interna Docker]
+        Streamlit -->|POST /upload| FastAPI[⚙️ API: FastAPI]
+        
+        subgraph IA_Engine [Processamento Local]
+            FastAPI -->|Extração| PyPDF2[📄 PyPDF2]
+            FastAPI -->|Prompt| Ollama[🧠 Ollama: Llama 3]
+            Ollama -->|Tradução| FastAPI
+        end
+        
+        subgraph Database [Dados]
+            FastAPI -->|Salva| Postgres[(🐘 PostgreSQL)]
+        end
+    end
+
+    FastAPI -->|Resposta| Streamlit
+    Streamlit -->|Resultado| User
+
+    style Streamlit fill:#f9f,stroke:#333
+    style FastAPI fill:#00ffcc,stroke:#333
+    style Ollama fill:#ff9900,stroke:#333
+    style Postgres fill:#336791,stroke:#fff
+```
