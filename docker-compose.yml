@@ -1,5 +1,31 @@
 services:
-  # O Motor (FastAPI)
+  # 1. O Banco de Dados (O Arquivo Digital)
+  db:
+    image: postgres:15
+    container_name: juridiques-db
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: Juridiques2026
+      POSTGRES_DB: juridiques_zero
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - juridiques-network
+
+  # 2. O Cérebro Local (IA Privada)
+  ollama:
+    image: ollama/ollama:latest
+    container_name: juridiques-ollama
+    restart: always
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    networks:
+      - juridiques-network
+
+  # 3. O Motor (FastAPI)
   api:
     build: .
     command: python3 -m uvicorn app.main:app --host 0.0.0.0 --port 8000
@@ -7,8 +33,13 @@ services:
       - "8000:8000"
     env_file:
       - .env
+    depends_on:
+      - db
+      - ollama  # Agora a API espera o banco e a IA subirem
+    networks:
+      - juridiques-network
 
-  # A Vitrine (Streamlit)
+  # 4. A Vitrine (Streamlit)
   interface:
     build: .
     command: streamlit run interface.py --server.port 8501 --server.address 0.0.0.0
@@ -18,3 +49,14 @@ services:
       - api
     env_file:
       - .env
+    networks:
+      - juridiques-network
+
+# Configurações de Infraestrutura
+volumes:
+  postgres_data:
+  ollama_data:  # Garante que o modelo da IA não precise ser baixado de novo
+
+networks:
+  juridiques-network:
+    driver: bridge
