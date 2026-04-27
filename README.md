@@ -57,7 +57,6 @@ O monitoramento via Docker Desktop garante o controle de recursos (CPU/Memória)
 ---
 
 ## ⏳ Galeria de Evolução: O Processo de Desenvolvimento
-Antes da arquitetura final, o projeto passou por fases de validação fundamentais:
 
 | | | |
 | :---: | :---: | :---: |
@@ -65,10 +64,4 @@ Antes da arquitetura final, o projeto passou por fases de validação fundamenta
 | ![IMAGEM4](docs/imagem4.png) | ![IMAGEM5](docs/imagem5.png) | ![IMAGEM6](docs/imagem6.png) |
 | ![IMAGEM7](docs/imagem7.png) | ![IMAGEM8](docs/imagem8.png) | |
 
-**O que estas imagens representam:**
-* Validação de Metadados: Transição da leitura bruta para a extração inteligente.
-* Segurança de Header: Implementação da chave de segurança Juridiques2026.
-* Logs de Depuração: Monitorização da comunicação entre os microserviços.
-
 **Desenvolvido por Liucera - Aluno do CAPACITA IREDE.**
- 
