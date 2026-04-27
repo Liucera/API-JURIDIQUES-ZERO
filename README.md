@@ -31,11 +31,11 @@ Implementação em ambiente de produção real na **Amazon Web Services (AWS)**:
 
 | 🛡️ Painel AWS EC2 | 🖥️ Interface do Usuário | ⚙️ Swagger API |
 | :---: | :---: | :---: |
-| ![AWS](docs/aws_painel.png) | ![Interface](docs/interface.png) | ![Swagger](docs/swagger.png) |
+| ![AWS](docs/aws_painel.PNG) | ![Interface](docs/interface.PNG) | ![Swagger](docs/swagger.PNG) |
 
 | 📄 Redoc Profissional | ⚖️ Resultado IA | 🛠️ Log de Sistema |
 | :---: | :---: | :---: |
-| ![Redoc](docs/redoc.png) | ![Resultado](docs/tela_inicial.png) | ![Log](docs/log_execucao.png) |
+| ![Redoc](docs/redoc.PNG) | ![Resultado](docs/tela_inicial.PNG) | ![Log](docs/log_execucao.PNG) |
 
 ---
 
