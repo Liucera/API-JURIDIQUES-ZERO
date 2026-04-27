@@ -71,3 +71,4 @@ Antes da arquitetura final, o projeto passou por fases de validação fundamenta
 * Logs de Depuração: Monitorização da comunicação entre os microserviços.
 
 **Desenvolvido por Liucera - Aluno do CAPACITA IREDE.**
+ 
