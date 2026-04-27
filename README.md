@@ -1,111 +1,52 @@
-# ⚖️ Juridiques Zero - Inteligência Jurídica Soberana
+# Juridiques Zero ⚖️
 
-**Soberania Digital e Inteligência Artificial Local para o setor Jurídico.**
-
-O **Juridiques Zero** é um ecossistema de microserviços desenhado para democratizar o entendimento de documentos judiciais. O projeto resolve o problema do "juridiquês" arcaico, permitindo que advogados e cidadãos convertam decisões complexas em linguagem clara de forma **100% privada e offline**.
+Plataforma inteligente para simplificação de documentos jurídicos, evoluída de um script local para uma arquitetura robusta em nuvem. Este projeto é uma **Prova de Conceito (PoC)** de uma solução SaaS completa na AWS.
 
 ---
 
-## 🎯 Objetivo e Foco do Projeto
-O sistema foca na **Gestão de Decisões Judiciais e Liminares**. O diferencial é a **Privacidade Total**: ao utilizar modelos de IA locais, garantimos que dados sensíveis de processos (como nomes de partes e valores de causas) nunca saiam da infraestrutura controlada pelo usuário, respeitando integralmente a LGPD.
+## 📈 Jornada de Desenvolvimento
 
-### Exemplo de Uso Real:
-* **Entrada:** Uma decisão técnica da 2ª Vara Cível sobre uma tutela de urgência.
-* **Saída:** Identificação automática do prazo (ex: 48h), valor da multa (ex: R$ 20.000,00) e uma explicação simplificada: *"O juiz aceitou o pedido urgente"*.
+### 🔹 Fase 1: O Protótipo (Backend)
+Nascimento do projeto em Python puro para validação da lógica de extração de texto de PDFs jurídicos e limpeza de dados.
 
----
+### 🔹 Fase 2: Modernização e Containerização (Docker)
+Migração para Microserviços utilizando **Docker Compose**:
+* **API:** FastAPI para alta performance.
+* **Interface:** Streamlit para interação fluida.
+* **Database:** PostgreSQL para persistência.
+* **IA Local:** Orquestração do motor Phi-3 via Ollama.
 
-## 🏗️ Arquitetura do Sistema (Provisionamento PSC)
-
-Abaixo, detalhamos a infraestrutura conteinerizada que compõe o ecossistema:
-
-### 1. Orquestração de Microserviços
-O sistema utiliza **Docker Compose** para gerenciar quatro serviços integrados:
-* **API (FastAPI):** O cérebro logístico. Extrai texto de PDFs via `PyPDF2` e coordena a IA e o banco de dados.
-* **IA Local (Ollama/Llama 3):** Processamento de linguagem natural rodando localmente, eliminando custos com APIs externas.
-* **Banco de Dados (PostgreSQL):** "Arquivo Digital" persistente que imortaliza cada documento processado.
-* **Interface (Streamlit):** Porta de entrada visual para upload e consulta de documentos.
-
-### 2. Rede Interna e Service Discovery
-Os contêineres comunicam-se via nomes de serviço (`http://api:8000`), simulando um ambiente real de Data Center, sem exposição desnecessária de portas para o host.
+### 🔹 Fase 3: Produção em Nuvem (AWS & IA)
+Deploy real na **Amazon Web Services (AWS)** em instância **EC2**:
+* **Infraestrutura:** Servidor Ubuntu com volumes EBS expandidos.
+* **Cérebro:** Modelo **Phi-3** rodando localmente.
+* **Rede:** Configuração de Security Groups e exposição de portas públicas.
 
 ---
 
-## 🔌 Documentação da API (Swagger)
-O projeto conta com documentação interativa automática para testes de endpoints.
-👉 **Acesse em:** `http://localhost:8000/docs`
+## 🚀 Acesso ao Sistema
+* **Interface:** [http://44.204.201.27:8501](http://44.204.201.27:8501)
+* **API Swagger:** [http://44.204.201.27:8000/docs](http://44.204.201.27:8000/docs)
+* **Redoc:** [http://44.204.201.27:8000/redoc](http://44.204.201.27:8000/redoc)
 
 ---
 
-## 🚀 Como Executar (Passo a Passo)
+## 📸 Galeria de Implementação (Evidências Técnicas)
 
-1. **Clonar o Repositório:**
-   ```bash
-   git clone [https://github.com/Liucera/API-JURIDIQUES-ZERO.git](https://github.com/Liucera/API-JURIDIQUES-ZERO.git)
-   cd API-JURIDIQUES-ZERO
+| 🛡️ Painel AWS EC2 | 🖥️ Interface do Usuário | ⚙️ Swagger API |
+| :---: | :---: | :---: |
+| ![AWS](docs/aws_painel1.PNG) | ![Interface](docs/interface1.PNG) | ![Swagger](docs/swagger1.PNG) |
 
-2. Provisionar a Infraestrutura:
-
-Bash
-docker-compose up -d --build
-
-3.0 Instalar o Modelo de IA (Obrigatório na primeira execução):
-
-Bash
-docker exec -it juridiques-ollama ollama run llama3
-
-4.0 Acessar o Sistema:
-
-Interface: http://localhost:8501
-
-API Docs: http://localhost:8000/docs
-
-5.0 📸 Demonstração do Ambiente Operacional
-O monitoramento via Docker Desktop garante o controle de recursos (CPU/Memória) de cada serviço em tempo real.
+| 📄 Redoc Profissional | ⚖️ Resultado IA | 🛠️ Log de Sistema |
+| :---: | :---: | :---: |
+| ![Redoc](docs/redoc1.PNG) | ![Resultado](docs/tela_inicial1.PNG) | ![Log](docs/log_execucao1.PNG) |
 
 ---
 
-## ⏳ Galeria de Evolução: O Processo de Desenvolvimento
+## ⚠️ Análise de Viabilidade e Ressalvas
+* **Gargalo de Hardware:** O processamento via CPU gera latência (média 4min). Para produção, é indispensável o uso de **GPUs**.
+* **Consumo de Memória:** O modelo Phi-3 exige cerca de 4GB de RAM estável.
+* **Escalabilidade:** Prevista hibridização com APIs externas (OpenAI/Groq) para ganho de performance.
 
-Antes da arquitetura final com IA Local, o projeto passou por fases de validação fundamentais para garantir a precisão da extração e segurança:
-
-<p align="center">
-  <img src="./docs/imagem1.png" width="18%" />
-  <img src="./docs/imagem2.png" width="18%" />
-  <img src="./docs/imagem3.png" width="18%" />
-  <img src="./docs/imagem4.png" width="18%" />
-  <img src="./docs/imagem5.png" width="18%" />
-</p>
-
-### O que estas imagens representam:
-* **Validação de Metadados:** Transição da leitura bruta para a extração inteligente.
-* **Segurança de Header:** Implementação da chave de segurança `Juridiques2026`.
-* **Logs de Depuração:** Monitorização da comunicação entre os microserviços.
-## 📊 Fluxo de Arquitetura
-
-```mermaid
-graph TD
-    User((👤 Usuário)) -->|Upload PDF| Streamlit[🖥️ Interface: Streamlit]
-    
-    subgraph Docker_Network [Rede Interna Docker]
-        Streamlit -->|POST /upload| FastAPI[⚙️ API: FastAPI]
-        
-        subgraph IA_Engine [Processamento Local]
-            FastAPI -->|Extração| PyPDF2[📄 PyPDF2]
-            FastAPI -->|Prompt| Ollama[🧠 Ollama: Llama 3]
-            Ollama -->|Tradução| FastAPI
-        end
-        
-        subgraph Database [Dados]
-            FastAPI -->|Salva| Postgres[(🐘 PostgreSQL)]
-        end
-    end
-
-    FastAPI -->|Resposta| Streamlit
-    Streamlit -->|Resultado| User
-
-    style Streamlit fill:#f9f,stroke:#333
-    style FastAPI fill:#00ffcc,stroke:#333
-    style Ollama fill:#ff9900,stroke:#333
-    style Postgres fill:#336791,stroke:#fff
-```
+---
+*Desenvolvido por Arlindo da Silva Barroso - Especialista Cloud & Logística.*
