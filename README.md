@@ -21,11 +21,17 @@ Este repositório documenta a progressão técnica do projeto:
 * **API Swagger:** [http://44.204.201.27:8000/docs](http://44.204.201.27:8000/docs)
 * **Redoc:** [http://44.204.201.27:8000/redoc](http://44.204.201.27:8000/redoc)
 
-### 🖼️ Screenshots do Sistema
-| Interface Streamlit | Painel AWS EC2 | Documentação API (Swagger) |
-| :--- | :--- | :--- |
-| ![Interface](./docs/screenshots/interface_streamlit_sucesso.png) | ![AWS](./docs/screenshots/aws_ec2_painel.png) | ![Swagger](./docs/screenshots/swagger_api_docs.png) |
+### 📸 Galeria de Implementação e Resultados
 
+| 🛡️ Painel AWS EC2 | 🖥️ Interface Streamlit | ⚙️ Documentação Swagger |
+| :---: | :---: | :---: |
+| ![AWS](docs/aws_painel.png) | ![Interface](docs/interface.png) | ![Swagger](docs/swagger.png) |
+
+| 📄 Redoc API | ⚖️ Resultado do Processamento | 🚀 Outros Logs |
+| :---: | :---: | :---: |
+| ![Redoc](docs/redoc.png) | ![Resultado](docs/tela_inicial.png) | ![Docs](docs/imagem1.png) |
+
+> *A galeria acima documenta a eficácia do projeto Juridiques Zero, desde a infraestrutura na nuvem AWS até a entrega final da simplificação jurídica via IA.*
 ---
 
 ## ⚠️ Análise Técnica e Ressalvas (Performance & Escalabilidade)
