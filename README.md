@@ -131,7 +131,7 @@ graph TD
         
         subgraph IA_Engine [Processamento Local]
             FastAPI -->|Extração| PyPDF2[📄 PyPDF2]
-            FastAPI -->|Prompt| Ollama[🧠 Ollama: Llama 3]
+            FastAPI -->|Prompt| Ollama[🧠 Ollama: Phi-3]
             Ollama -->|Tradução| FastAPI
         end
         
