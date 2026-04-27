@@ -1,15 +1,44 @@
-# ⚖️ Juridiques Zero - Inteligência Jurídica Soberana
+# Juridiques Zero ⚖️
 
-**Soberania Digital e Inteligência Artificial Local para o setor Jurídico.**
-
-O **Juridiques Zero** é um ecossistema de microserviços desenhado para democratizar o entendimento de documentos judiciais. O projeto resolve o problema do "juridiquês" arcaico, permitindo que advogados e cidadãos convertam decisões complexas em linguagem clara de forma **100% privada e offline**.
+Uma plataforma inteligente para simplificação de documentos jurídicos, desenvolvida como uma **Prova de Conceito (PoC)** de uma solução SaaS completa, abrangendo desde o backend local até o deploy em infraestrutura de nuvem escalável.
 
 ---
 
-## 🎯 Objetivo e Foco do Projeto
-O sistema foca na **Gestão de Decisões Judiciais e Liminares**. O diferencial é a **Privacidade Total**: ao utilizar modelos de IA locais, garantimos que dados sensíveis de processos (como nomes de partes e valores de causas) nunca saiam da infraestrutura controlada pelo usuário, respeitando integralmente a LGPD.
+## 📈 Jornada de Evolução e Infraestrutura
 
-# Juridiques Zero API ⚖️
+Este repositório documenta a progressão técnica do projeto:
+
+1.  **Fase 1: Backend Funcional** – Extração de dados de PDFs utilizando Python e FastAPI.
+2.  **Fase 2: Arquitetura de Microserviços** – Containerização com Docker e Docker Compose, separando API, Interface (Streamlit) e Banco de Dados (PostgreSQL).
+3.  **Fase 3: Deploy em Nuvem (AWS EC2)** – Execução em instância `m7i-flex.large` na Amazon Web Services, com orquestração de IA local via Ollama.
+
+---
+
+## 📸 Demonstração e Documentação
+
+### 🌐 Links de Acesso Direto
+* **Interface Streamlit:** [http://44.204.201.27:8501](http://44.204.201.27:8501)
+* **API Swagger:** [http://44.204.201.27:8000/docs](http://44.204.201.27:8000/docs)
+* **Redoc:** [http://44.204.201.27:8000/redoc](http://44.204.201.27:8000/redoc)
+
+### 🖼️ Screenshots do Sistema
+| Interface Streamlit | Painel AWS EC2 | Documentação API (Swagger) |
+| :--- | :--- | :--- |
+| ![Interface](./docs/screenshots/interface_streamlit_sucesso.png) | ![AWS](./docs/screenshots/aws_ec2_painel.png) | ![Swagger](./docs/screenshots/swagger_api_docs.png) |
+
+---
+
+## ⚠️ Análise Técnica e Ressalvas (Performance & Escalabilidade)
+
+Como este projeto é uma Prova de Conceito, foram identificados pontos cruciais para a viabilidade de uma versão comercial:
+
+* **Gargalo de Latência:** O processamento atual (média de 4 minutos) ocorre via CPU. Em um ambiente de produção, é necessária a migração para **instâncias com GPU (AWS família G)** para reduzir a resposta para segundos.
+* **Otimização de Recursos:** A execução de LLMs locais consome elevada memória RAM (aprox. 4GB para o Phi-3). Recomenda-se o uso de **Cache (Redis/Postgres)** para evitar reprocessamento de documentos idênticos.
+* **Estratégia Híbrida:** Para maior agilidade e menor custo fixo de hardware, o projeto prevê a possibilidade de conexão com **APIs externas (Groq/OpenAI)**, garantindo desempenho instantâneo.
+* **Objetivo:** Este projeto demonstra a capacidade técnica de orquestrar um fluxo SaaS completo, desde a codificação até a gestão de instâncias em nuvem.
+
+---
+*Desenvolvido por Arlindo da Silva Barroso - Especialista em Logística e Desenvolvedor focado em Cloud Computing.*
 
 ## 📈 Jornada de Evolução
 Este repositório documenta a evolução completa de uma solução de engenharia de software:
