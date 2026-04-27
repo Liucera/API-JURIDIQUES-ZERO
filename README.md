@@ -9,9 +9,19 @@ O **Juridiques Zero** é um ecossistema de microserviços desenhado para democra
 ## 🎯 Objetivo e Foco do Projeto
 O sistema foca na **Gestão de Decisões Judiciais e Liminares**. O diferencial é a **Privacidade Total**: ao utilizar modelos de IA locais, garantimos que dados sensíveis de processos (como nomes de partes e valores de causas) nunca saiam da infraestrutura controlada pelo usuário, respeitando integralmente a LGPD.
 
-### Exemplo de Uso Real:
-* **Entrada:** Uma decisão técnica da 2ª Vara Cível sobre uma tutela de urgência.
-* **Saída:** Identificação automática do prazo (ex: 48h), valor da multa (ex: R$ 20.000,00) e uma explicação simplificada: *"O juiz aceitou o pedido urgente"*.
+# Juridiques Zero API ⚖️
+
+## 📈 Jornada de Evolução
+Este repositório documenta a evolução completa de uma solução de engenharia de software:
+
+* **Fase 1 (Local):** Construção de um backend funcional em Python/FastAPI para extração de PDFs.
+* **Fase 2 (Containerização):** Migração para arquitetura de microserviços utilizando **Docker** e **Docker Compose**, separando as camadas de lógica (API) e apresentação (Interface).
+* **Fase 3 (IA & Cloud - ATUAL):** * Deploy em produção na **AWS (Amazon EC2)**.
+    * Integração do LLM **Phi-3** rodando localmente no servidor via Ollama.
+    * Banco de dados PostgreSQL containerizado para persistência.
+
+---
+*(Abaixo segue a documentação detalhada de cada módulo)*
 
 ---
 
