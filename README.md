@@ -1,33 +1,37 @@
 # Juridiques Zero ⚖️
 
-Plataforma inteligente para simplificação de documentos jurídicos. Este projeto é uma **Prova de Conceito (PoC)** de uma solução SaaS completa, integrando infraestrutura de nuvem, IA local e APIs modernas.
+Plataforma inteligente para simplificação de documentos jurídicos, evoluída de um script local para uma arquitetura robusta em nuvem. Este projeto é uma **Prova de Conceito (PoC)** de uma solução SaaS completa na AWS.
 
 ---
 
-## 📈 Jornada Técnica de Desenvolvimento
+## 📈 Jornada de Desenvolvimento
 
 ### 🔹 Fase 1: O Protótipo (Backend)
-Desenvolvimento da lógica principal em Python para extração de texto de PDFs jurídicos complexos e estruturação de dados para processamento.
+Nascimento do projeto em Python puro para validação da lógica de extração de texto de PDFs jurídicos e limpeza de dados.
 
-### 🔹 Fase 2: Containerização (Docker)
-Migração para arquitetura de microserviços utilizando **Docker Compose**, garantindo isolamento entre a API (FastAPI), a interface (Streamlit) e o motor de IA.
+### 🔹 Fase 2: Modernização e Containerização (Docker)
+Migração para Microserviços utilizando **Docker Compose**:
+* **API:** FastAPI para alta performance.
+* **Interface:** Streamlit para interação fluida.
+* **Database:** PostgreSQL para persistência.
+* **IA Local:** Orquestração do motor Phi-3 via Ollama.
 
-### 🔹 Fase 3: Deploy Cloud (AWS EC2)
-Implementação em ambiente de produção real na **Amazon Web Services (AWS)**:
-* Instância **m7i-flex.large** no Ubuntu.
-* Configuração de Security Groups, portas de rede e volumes EBS.
-* Orquestração do modelo **Phi-3** para processamento local.
-
----
-
-## 🚀 Acesso e Demonstração
-* **Interface Streamlit:** [http://44.204.201.27:8501](http://44.204.201.27:8501)
-* **Documentação Swagger:** [http://44.204.201.27:8000/docs](http://44.204.201.27:8000/docs)
-* **Documentação Redoc:** [http://44.204.201.27:8000/redoc](http://44.204.201.27:8000/redoc)
+### 🔹 Fase 3: Produção em Nuvem (AWS & IA)
+Deploy real na **Amazon Web Services (AWS)** em instância **EC2**:
+* **Infraestrutura:** Servidor Ubuntu com volumes EBS expandidos.
+* **Cérebro:** Modelo **Phi-3** rodando localmente.
+* **Rede:** Configuração de Security Groups e exposição de portas públicas.
 
 ---
 
-## 📸 Galeria de Implementação e Evidências
+## 🚀 Acesso ao Sistema
+* **Interface:** [http://44.204.201.27:8501](http://44.204.201.27:8501)
+* **API Swagger:** [http://44.204.201.27:8000/docs](http://44.204.201.27:8000/docs)
+* **Redoc:** [http://44.204.201.27:8000/redoc](http://44.204.201.27:8000/redoc)
+
+---
+
+## 📸 Galeria de Implementação (13 Capturas)
 
 | 🛡️ Painel AWS EC2 | 🖥️ Interface do Usuário | ⚙️ Swagger API |
 | :---: | :---: | :---: |
@@ -39,10 +43,10 @@ Implementação em ambiente de produção real na **Amazon Web Services (AWS)**:
 
 ---
 
-## ⚠️ Ressalvas Técnicas e Próximos Passos
-* **Hardware:** Processamento via CPU apresenta latência. Recomendado o uso de **GPU** para produção.
-* **Recursos:** Consumo estável de 4GB RAM para o modelo local.
-* **Escalabilidade:** Estrutura preparada para transição para APIs de alta performance (Groq/OpenAI).
+## ⚠️ Análise de Viabilidade e Ressalvas
+* **Gargalo de Hardware:** O processamento via CPU gera latência (média 4min). Para produção, é indispensável o uso de **GPUs**.
+* **Consumo de Memória:** O modelo Phi-3 exige cerca de 4GB de RAM estável.
+* **Escalabilidade:** Prevista hibridização com APIs externas (OpenAI/Groq) para ganho de performance.
 
 ---
 *Desenvolvido por Arlindo da Silva Barroso - Especialista Cloud & Logística.*
