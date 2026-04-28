@@ -1,5 +1,6 @@
 services:
-  # 1. O Banco de Dados (O Arquivo Digital)
+  # 1. Banco de Dados PostgreSQL (O Arquivo Digital)
+  # Responsável por armazenar o histórico de documentos processados.
   db:
     image: postgres:15
     container_name: juridiques-db
@@ -13,7 +14,8 @@ services:
     networks:
       - juridiques-network
 
-  # 2. O Cérebro Local (IA Privada)
+  # 2. IA Local Ollama (O Cérebro)
+  # Executa o modelo Phi-3 localmente, garantindo privacidade jurídica.
   ollama:
     image: ollama/ollama:latest
     container_name: juridiques-ollama
@@ -25,7 +27,8 @@ services:
     networks:
       - juridiques-network
 
-  # 3. O Motor (FastAPI)
+  # 3. Backend FastAPI (O Motor)
+  # Orquestra a extração de PDFs, chamadas à IA e gravação no banco.
   api:
     build: .
     command: python3 -m uvicorn app.main:app --host 0.0.0.0 --port 8000
@@ -35,11 +38,12 @@ services:
       - .env
     depends_on:
       - db
-      - ollama  # Agora a API espera o banco e a IA subirem
+      - ollama
     networks:
       - juridiques-network
 
-  # 4. A Vitrine (Streamlit)
+  # 4. Interface Streamlit (A Vitrine)
+  # Interface web amigável para interação com o usuário final.
   interface:
     build: .
     command: streamlit run interface.py --server.port 8501 --server.address 0.0.0.0
@@ -52,11 +56,12 @@ services:
     networks:
       - juridiques-network
 
-# Configurações de Infraestrutura
+# Volumes persistentes para evitar perda de dados e modelos ao reiniciar containers
 volumes:
   postgres_data:
-  ollama_data:  # Garante que o modelo da IA não precise ser baixado de novo
+  ollama_data:
 
+# Rede interna para comunicação segura entre os serviços
 networks:
   juridiques-network:
     driver: bridge
