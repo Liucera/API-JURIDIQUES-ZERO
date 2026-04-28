@@ -79,3 +79,5 @@ A API foi construída com FastAPI, garantindo performance e documentação autom
 * **IA:** Ollama (Phi-3)
 * **Banco de Dados:** PostgreSQL
 * **Infra:** AWS (EC2 & Docker)
+
+Desenvolvido por Arlindo Barroso -- Aluno do CAPACITA-IREDE
