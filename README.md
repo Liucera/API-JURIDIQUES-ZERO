@@ -3,7 +3,7 @@
 
 ---
 ## 🏗️ Arquitetura Visual
-
+´´´mermaid
 graph TD
     User((👤 Usuário)) -->|Upload PDF| Streamlit[🖥️ Interface: Streamlit]
     
