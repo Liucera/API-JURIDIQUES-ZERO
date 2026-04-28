@@ -2,6 +2,30 @@
 > **Transformando o "Juridiquês" em clareza através de IA e Cloud Computing.**
 
 ---
+## 🏗️ Arquitetura Visual
+
+```mermaid
+graph TD
+    User((👤 Usuário)) -->|Upload PDF| Streamlit[🖥️ Interface: Streamlit]
+    
+    subgraph Docker_Network [Rede Interna Docker]
+        Streamlit -->|POST /upload| FastAPI[⚙️ API: FastAPI]
+        
+        subgraph IA_Engine [Processamento Local]
+            FastAPI -->|Extração| PyPDF2[📄 PyPDF2]
+            FastAPI -->|Prompt| Ollama[🧠 Ollama: phi-3]
+            Ollama -->|Tradução| FastAPI
+        end
+        
+        subgraph Database [Dados]
+            FastAPI -->|Salva| Postgres[(🐘 PostgreSQL)]
+        end
+    end
+
+    FastAPI -->|Resposta| Streamlit
+    Streamlit -->|Resultado| User
+
+    style Streamlit fill:#f9f,stroke:#333
 
 ## 🚀 O que é o Projeto?
 O **Juridiques Zero** é uma solução Full Stack projetada para resolver o abismo de comunicação entre advogados e clientes. Muitas vezes, o cliente recebe uma atualização processual ou um contrato e não compreende o impacto real daquelas palavras técnicos.
@@ -79,5 +103,14 @@ A API foi construída com FastAPI, garantindo performance e documentação autom
 * **IA:** Ollama (Phi-3)
 * **Banco de Dados:** PostgreSQL
 * **Infra:** AWS (EC2 & Docker)
+
+## ⚠️ Análise Técnica e Ressalvas (Performance & Escalabilidade)
+
+Como este projeto é uma Prova de Conceito, foram identificados pontos cruciais para a viabilidade de uma versão comercial:
+
+* **Gargalo de Latência:** O processamento atual (média de 4 minutos) ocorre via CPU. Em um ambiente de produção, é necessária a migração para **instâncias com GPU (AWS família G)** para reduzir a resposta para segundos.
+* **Otimização de Recursos:** A execução de LLMs locais consome elevada memória RAM (aprox. 4GB para o Phi-3). Recomenda-se o uso de **Cache (Redis/Postgres)** para evitar reprocessamento de documentos idênticos.
+* **Estratégia Híbrida:** Para maior agilidade e menor custo fixo de hardware, o projeto prevê a possibilidade de conexão com **APIs externas (Groq/OpenAI)**, garantindo desempenho instantâneo.
+* **Objetivo:** Este projeto demonstra a capacidade técnica de orquestrar um fluxo SaaS completo, desde a codificação até a gestão de instâncias em nuvem.
 
 Desenvolvido por Arlindo Barroso -- Aluno do CAPACITA-IREDE
