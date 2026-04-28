@@ -3,31 +3,34 @@
 
 ---
 ## 🏗️ Arquitetura Visual
-
-
-
 ´´´mermaid
 
 graph TD
+
     User((👤 Usuário)) -->|Upload PDF| Streamlit[🖥️ Interface: Streamlit]
-    
     
     subgraph Docker_Network [Rede Interna Docker]
         Streamlit -->|POST /upload| FastAPI[⚙️ API: FastAPI]
         
         subgraph IA_Engine [Processamento Local]
-            FastAPI -->|Extração| PyPDF2[📄 PyPDF2]
-            FastAPI -->|Prompt| Ollama[🧠 Ollama: phi-3]
-            Ollama -->|Tradução| FastAPI
+            FastAPI -->
+            |Extração| PyPDF2[📄 PyPDF2]
+            FastAPI -->
+            |Prompt| Ollama[🧠 Ollama: phi-3]
+            Ollama -->
+            |Tradução| FastAPI
         end
         
         subgraph Database [Dados]
-            FastAPI -->|Salva| Postgres[(🐘 PostgreSQL)]
+            FastAPI -->
+            |Salva| Postgres[(🐘 PostgreSQL)]
         end
     end
 
-    FastAPI -->|Resposta| Streamlit
-    Streamlit -->|Resultado| User
+    FastAPI -->
+    |Resposta| Streamlit
+    Streamlit -->
+    |Resultado| User
 
     style Streamlit fill:#f9f,stroke:#333
 
