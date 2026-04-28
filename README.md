@@ -3,23 +3,21 @@
 
 ---
 ## 🏗️ Arquitetura Visual
-
+## 🏗️ Arquitetura Visual
 ```mermaid
 graph TD
-    User((👤 Usuário)) -->|Upload PDF| Streamlit[🖥️ Interface: Streamlit]
+    User((Usuário/Advogado)) -->|Acessa Porta 8501| Streamlit[Interface Streamlit]
+    Streamlit -->|Requisições REST| FastAPI[API FastAPI - Porta 8000]
+    FastAPI -->|Persistência| Postgres[(Banco de Dados PostgreSQL)]
+    FastAPI -->|Prompt de Tradução| Ollama[Motor de IA - Ollama/Phi-3]
+    Ollama -->|Linguagem Simples| FastAPI
+    FastAPI -->|Resposta| Streamlit
     
-    subgraph Docker_Network [Rede Interna Docker]
-        Streamlit -->|POST /upload| FastAPI[⚙️ API: FastAPI]
-        
-        subgraph IA_Engine [Processamento Local]
-            FastAPI -->|Extração| PyPDF2[📄 PyPDF2]
-            FastAPI -->|Prompt| Ollama[🧠 Ollama: phi-3]
-            Ollama -->|Tradução| FastAPI
-        end
-        
-        subgraph Database [Dados]
-            FastAPI -->|Salva| Postgres[(🐘 PostgreSQL)]
-        end
+    subgraph "Infraestrutura AWS (EC2)"
+    Streamlit
+    FastAPI
+    Postgres
+    Ollama
     end
 
 ## 🚀 O que é o Projeto?
