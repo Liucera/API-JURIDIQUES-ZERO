@@ -1,4 +1,4 @@
-# ⚖️ Juridiques Zero API
+# ⚖️ Juridiques Zero API (PROVA DE CONCEITO)
 > **Transformando o "Juridiquês" em clareza através de IA e Cloud Computing.**
 
 ---
