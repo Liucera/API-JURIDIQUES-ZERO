@@ -4,27 +4,32 @@
 ---
 ## 🏗️ Arquitetura Visual
 
+```mermaid
 graph TD
-    %% Usuário e Interface
     User((👤 Usuário)) -->|Upload PDF| Streamlit[🖥️ Interface: Streamlit]
-    
-    subgraph Docker_Network [Rede Interna Docker: 'juridiques-network']
-        %% API e Lógica
+
+    subgraph Docker_Network [Rede Interna Docker: juridiques-network]
         Streamlit -->|POST /upload| FastAPI[⚙️ API: FastAPI]
-        
-        %% Processamento e IA
+
         subgraph IA_Engine [Processamento Local]
             FastAPI -->|Extração| PyPDF2[📄 PyPDF2]
             FastAPI -->|Prompt Padronizado| Ollama[🧠 Ollama: phi-3]
             Ollama -->|Tradução Simples| FastAPI
         end
-        
-        %% Persistência
+
         subgraph Database [Camada de Dados]
             FastAPI -->|Salva Documento| Postgres[(🐘 PostgreSQL)]
             Postgres -->|Status: OK| FastAPI
         end
     end
+
+    FastAPI -->|JSON Response| Streamlit
+    Streamlit -->|Exibe Texto Claro| User
+
+    style Streamlit fill:#f9f,stroke:#333,stroke-width:2px
+    style FastAPI fill:#00ffcc,stroke:#333,stroke-width:2px
+    style Ollama fill:#ff9900,stroke:#333,stroke-width:2px
+    style Postgres fill:#336791,stroke:#fff,stroke-width:2px
 
     %% Resposta Final
     FastAPI -->|JSON Response| Streamlit
