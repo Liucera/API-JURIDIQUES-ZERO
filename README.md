@@ -4,22 +4,37 @@
 ---
 ## 🏗️ Arquitetura Visual
 
-```mermaid
 graph TD
-    User((Usuário/Advogado)) -->|Acessa Porta 8501| Streamlit[Interface Streamlit]
-    Streamlit -->|Requisições REST| FastAPI[API FastAPI - Porta 8000]
-    FastAPI -->|Persistência| Postgres[(Banco de Dados PostgreSQL)]
-    FastAPI -->|Prompt de Tradução| Ollama[Motor de IA - Ollama/Phi-3]
-    Ollama -->|Linguagem Simples| FastAPI
-    FastAPI -->|Resposta| Streamlit
+    %% Usuário e Interface
+    User((👤 Usuário)) -->|Upload PDF| Streamlit[🖥️ Interface: Streamlit]
     
-    subgraph "Infraestrutura AWS (EC2)"
-    Streamlit
-    FastAPI
-    Postgres
-    Ollama
+    subgraph Docker_Network [Rede Interna Docker: 'juridiques-network']
+        %% API e Lógica
+        Streamlit -->|POST /upload| FastAPI[⚙️ API: FastAPI]
+        
+        %% Processamento e IA
+        subgraph IA_Engine [Processamento Local]
+            FastAPI -->|Extração| PyPDF2[📄 PyPDF2]
+            FastAPI -->|Prompt Padronizado| Ollama[🧠 Ollama: phi-3]
+            Ollama -->|Tradução Simples| FastAPI
+        end
+        
+        %% Persistência
+        subgraph Database [Camada de Dados]
+            FastAPI -->|Salva Documento| Postgres[(🐘 PostgreSQL)]
+            Postgres -->|Status: OK| FastAPI
+        end
     end
 
+    %% Resposta Final
+    FastAPI -->|JSON Response| Streamlit
+    Streamlit -->|Exibe Texto Claro| User
+
+    %% Estilização
+    style Streamlit fill:#f9f,stroke:#333,stroke-width:2px
+    style FastAPI fill:#00ffcc,stroke:#333,stroke-width:2px
+    style Ollama fill:#ff9900,stroke:#333,stroke-width:2px
+    style Postgres fill:#336791,stroke:#fff,stroke-width:2px
 ## 🚀 O que é o Projeto?
 O **Juridiques Zero** é uma solução Full Stack projetada para resolver o abismo de comunicação entre advogados e clientes. Muitas vezes, o cliente recebe uma atualização processual ou um contrato e não compreende o impacto real daquelas palavras técnicos.
 
