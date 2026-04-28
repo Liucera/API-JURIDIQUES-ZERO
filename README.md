@@ -107,7 +107,8 @@ Abaixo, as capturas de tela que comprovam a infraestrutura rodando na AWS:
 
 3.  **Acesse o sistema:**
     * **Interface Web:** `http://seu-ip:8501`
-    * **Documentação API:** `http://seu-ip:8000/docs`
+    * **Swagger UI:** [http://44.204.201.27:8000/docs](http://44.204.201.27:8000/docs)
+    * **ReDoc:** [http://44.204.201.27:8000/redoc](http://44.204.201.27:8000/redoc)
 
 ---
 
