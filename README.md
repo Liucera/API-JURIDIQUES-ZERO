@@ -4,18 +4,16 @@
 ---
 ## 🏗️ Arquitetura Visual
 
-## 🏗️ Arquitetura Visual
-
 ```mermaid
 graph TD
-    User((👤 Usuário)) -->|Upload PDF| Streamlit[🖥️ Interface: Streamlit]
+    User(( Usuário)) -->|Upload PDF| Streamlit[ Interface: Streamlit]
 
     subgraph Docker_Network [Rede Interna Docker: juridiques-network]
-        Streamlit -->|POST /upload| FastAPI[⚙️ API: FastAPI]
+        Streamlit -->|POST /upload| FastAPI[ API: FastAPI]
 
         subgraph IA_Engine [Processamento Local]
-            FastAPI -->|Extração| PyPDF2[📄 PyPDF2]
-            FastAPI -->|Prompt Padronizado| Ollama[🧠 Ollama: phi-3]
+            FastAPI -->|Extração| PyPDF2[ PyPDF2]
+            FastAPI -->|Prompt Padronizado| Ollama[ Ollama: phi-3]
             Ollama -->|Tradução Simples| FastAPI
         end
 
