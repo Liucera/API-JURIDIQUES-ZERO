@@ -8,7 +8,6 @@
 
 graph TD
     User((👤 Usuário)) -->|Upload PDF| Streamlit[🖥️ Interface: Streamlit]
-    
     subgraph Docker_Network [Rede Interna Docker]
         Streamlit -->|POST /upload| FastAPI[⚙️ API: FastAPI]
         
