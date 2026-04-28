@@ -5,27 +5,45 @@
 ## 🏗️ Arquitetura Visual
 
 ```mermaid
+
 graph TD
-    User((👤 Usuário)) -->|Upload PDF| Streamlit[🖥️ Interface: Streamlit]
-    
-    subgraph Docker_Network [Rede Interna Docker]
-        Streamlit -->|POST /upload| FastAPI[⚙️ API: FastAPI]
-        
-        subgraph IA_Engine [Processamento Local]
-            FastAPI -->|Extração| PyPDF2[📄 PyPDF2]
-            FastAPI -->|Prompt| Ollama[🧠 Ollama: phi-3]
-            Ollama -->|Tradução| FastAPI
-        end
-        
-        subgraph Database [Dados]
-            FastAPI -->|Salva| Postgres[(🐘 PostgreSQL)]
-        end
-    end
 
-    FastAPI -->|Resposta| Streamlit
-    Streamlit -->|Resultado| User
+User((👤 Usuário)) -->|Upload PDF| Streamlit[🖥️ Interface: Streamlit]
 
-    style Streamlit fill:#f9f,stroke:#333
+
+subgraph Docker_Network [Rede Interna Docker]
+
+Streamlit -->|POST /upload| FastAPI[⚙️ API: FastAPI]
+
+
+subgraph IA_Engine [Processamento Local]
+
+FastAPI -->|Extração| PyPDF2[📄 PyPDF2]
+
+FastAPI -->|Prompt| Ollama[🧠 Ollama: phi-3]
+
+Ollama -->|Tradução| FastAPI
+
+end
+
+
+subgraph Database [Dados]
+
+FastAPI -->|Salva| Postgres[(🐘 PostgreSQL)]
+
+end
+
+end
+
+
+
+FastAPI -->|Resposta| Streamlit
+
+Streamlit -->|Resultado| User
+
+
+
+style Streamlit fill:#f9f,stroke:#333
 
 ## 🚀 O que é o Projeto?
 O **Juridiques Zero** é uma solução Full Stack projetada para resolver o abismo de comunicação entre advogados e clientes. Muitas vezes, o cliente recebe uma atualização processual ou um contrato e não compreende o impacto real daquelas palavras técnicos.
