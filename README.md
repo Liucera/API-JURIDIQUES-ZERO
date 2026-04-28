@@ -78,9 +78,6 @@ Abaixo, as capturas de tela que comprovam a infraestrutura rodando na AWS:
 ### Interface do Usuário (Streamlit)
 ![Interface Principal](docs/interface1.png)
 
-### Painel de Controle AWS
-![Painel AWS](docs/aws_painel1.png)
-
 ### Documentação Técnica (Swagger & ReDoc)
 ![Swagger](docs/swagger1.png)
 ![ReDoc](docs/redoc1.png)
