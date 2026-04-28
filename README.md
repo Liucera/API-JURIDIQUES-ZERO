@@ -3,7 +3,7 @@
 
 ---
 ## 🏗️ Arquitetura Visual
-´´´mermaid
+```mermaid
 
 graph TD
 
