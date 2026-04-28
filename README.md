@@ -3,7 +3,7 @@
 
 ---
 ## 🏗️ Arquitetura Visual
-## 🏗️ Arquitetura Visual
+
 ```mermaid
 graph TD
     User((Usuário/Advogado)) -->|Acessa Porta 8501| Streamlit[Interface Streamlit]
