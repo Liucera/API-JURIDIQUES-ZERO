@@ -34,6 +34,29 @@ graph TD
 
     style Streamlit fill:#f9f,stroke:#333
 ```
+## 🌐 Acesso Direto
+O sistema está rodando em uma instância EC2 na AWS e pode ser acessado pelo link abaixo:
+🔗 **[http://44.204.201.27:8501](http://44.204.201.27:8501)**
+
+---
+
+## 💡 Funcionamento e Casos de Uso
+O **Juridiques Zero** oferece duas frentes principais de interação para simplificação de termos:
+
+1.  **Execução de Prompt Direto:** O usuário digita um termo ou parágrafo jurídico isolado para tradução imediata.
+2.  **Upload de Documentos (PDF):** O sistema realiza a extração do texto de arquivos PDF. 
+    * **Processamento Local:** Após clicar em "Traduzir Localmente", o motor de IA (Phi-3 via Ollama) processa os dados. 
+    * **Performance:** Devido ao processamento em CPU (PoC), o tempo médio de resposta é de **4 minutos**.
+
+---
+
+## 🐘 Estrutura de Dados (Logs do Banco)
+Diferente de sistemas de gestão simples, nosso banco de dados foca na **rastreabilidade do processamento**. As tabelas registram:
+* **Nome do Arquivo:** Identificação do documento processado.
+* **Data do Processamento:** Registro cronológico de quando a análise foi feita.
+* **Categoria:** Classificação automática do documento (Ex: **Jurídico** ou **Logístico**).
+
+---
 
 ## 🚀 O que é o Projeto?
 O **Juridiques Zero** é uma solução Full Stack projetada para resolver o abismo de comunicação entre advogados e clientes. Muitas vezes, o cliente recebe uma atualização processual ou um contrato e não compreende o impacto real daquelas palavras técnicos.
