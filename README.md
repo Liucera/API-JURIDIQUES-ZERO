@@ -33,6 +33,7 @@ graph TD
     |Resultado| User
 
     style Streamlit fill:#f9f,stroke:#333
+```
 
 ## 🚀 O que é o Projeto?
 O **Juridiques Zero** é uma solução Full Stack projetada para resolver o abismo de comunicação entre advogados e clientes. Muitas vezes, o cliente recebe uma atualização processual ou um contrato e não compreende o impacto real daquelas palavras técnicos.
