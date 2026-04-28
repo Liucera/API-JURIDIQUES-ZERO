@@ -31,15 +31,6 @@ graph TD
     style Ollama fill:#ff9900,stroke:#333,stroke-width:2px
     style Postgres fill:#336791,stroke:#fff,stroke-width:2px
 
-    %% Resposta Final
-    FastAPI -->|JSON Response| Streamlit
-    Streamlit -->|Exibe Texto Claro| User
-
-    %% Estilização
-    style Streamlit fill:#f9f,stroke:#333,stroke-width:2px
-    style FastAPI fill:#00ffcc,stroke:#333,stroke-width:2px
-    style Ollama fill:#ff9900,stroke:#333,stroke-width:2px
-    style Postgres fill:#336791,stroke:#fff,stroke-width:2px
 ## 🚀 O que é o Projeto?
 O **Juridiques Zero** é uma solução Full Stack projetada para resolver o abismo de comunicação entre advogados e clientes. Muitas vezes, o cliente recebe uma atualização processual ou um contrato e não compreende o impacto real daquelas palavras técnicos.
 
