@@ -123,8 +123,8 @@ A API foi construída com FastAPI, garantindo performance e documentação autom
 ---
 
 ## 💡 Exemplos Reais de Uso
-1.  **Cadastro de Processo:** O advogado insere o número `0001234-56.2024.8.06.0001` e o status "Concluso para despacho".
-2.  **Tradução de Termo:** Ao inserir "Concluso para despacho", a IA retorna: *"O seu processo está na mesa do juiz aguardando uma decisão simples."*
+1.  **Inicio do Processo:** Realize o prompt no campo PROMPT ou faça upload do arquivo em formato pdf.
+2.  **Tradução de Termo:** Ao clicar no botão TRADUZIR COM IA, a IA retorna com o resultado: *"O seu processo está na mesa do juiz aguardando uma decisão simples."*
 3.  **Gestão de Contratos:** Armazenamento de PDFs de contratos para consulta rápida.
 
 ---
