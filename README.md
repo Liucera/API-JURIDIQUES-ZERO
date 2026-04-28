@@ -6,30 +6,26 @@
 
 ```mermaid
 graph TD
-    User(( Usuário)) -->|Upload PDF| Streamlit[ Interface: Streamlit]
-
-    subgraph Docker_Network [Rede Interna Docker: juridiques-network]
-        Streamlit -->|POST /upload| FastAPI[ API: FastAPI]
-
+    User((👤 Usuário)) -->|Upload PDF| Streamlit[🖥️ Interface: Streamlit]
+    
+    subgraph Docker_Network [Rede Interna Docker]
+        Streamlit -->|POST /upload| FastAPI[⚙️ API: FastAPI]
+        
         subgraph IA_Engine [Processamento Local]
-            FastAPI -->|Extração| PyPDF2[ PyPDF2]
-            FastAPI -->|Prompt Padronizado| Ollama[ Ollama: phi-3]
-            Ollama -->|Tradução Simples| FastAPI
+            FastAPI -->|Extração| PyPDF2[📄 PyPDF2]
+            FastAPI -->|Prompt| Ollama[🧠 Ollama: phi-3]
+            Ollama -->|Tradução| FastAPI
         end
-
-        subgraph Database [Camada de Dados]
-            FastAPI -->|Salva Documento| Postgres[(🐘 PostgreSQL)]
-            Postgres -->|Status: OK| FastAPI
+        
+        subgraph Database [Dados]
+            FastAPI -->|Salva| Postgres[(🐘 PostgreSQL)]
         end
     end
 
-    FastAPI -->|JSON Response| Streamlit
-    Streamlit -->|Exibe Texto Claro| User
+    FastAPI -->|Resposta| Streamlit
+    Streamlit -->|Resultado| User
 
-    style Streamlit fill:#f9f,stroke:#333,stroke-width:2px
-    style FastAPI fill:#00ffcc,stroke:#333,stroke-width:2px
-    style Ollama fill:#ff9900,stroke:#333,stroke-width:2px
-    style Postgres fill:#336791,stroke:#fff,stroke-width:2px
+    style Streamlit fill:#f9f,stroke:#333
 
 ## 🚀 O que é o Projeto?
 O **Juridiques Zero** é uma solução Full Stack projetada para resolver o abismo de comunicação entre advogados e clientes. Muitas vezes, o cliente recebe uma atualização processual ou um contrato e não compreende o impacto real daquelas palavras técnicos.
