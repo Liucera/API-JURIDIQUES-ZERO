@@ -8,6 +8,8 @@ Simplificacao de documentos juridicos com Inteligencia Artificial local e hibrid
 
 ## Arquitetura
 
+![Arquitetura API Juridiques Zero v2.1.0](docs/arquitetura_juridiques_zero.png)
+
 - Frontend: React + Vite
 - Backend: FastAPI (Python)
 - IA Local: Ollama (gemma2:2b)
